@@ -1,0 +1,3 @@
+class WeeklyReviewQuestion < ApplicationRecord
+end
+

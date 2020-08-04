@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_205704) do
+ActiveRecord::Schema.define(version: 2020_07_31_210135) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "review_questions", force: :cascade do |t|
+    t.uuid "weekly_review_id"
+    t.integer "weekly_review_question_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +33,27 @@ ActiveRecord::Schema.define(version: 2020_07_30_205704) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "weekly_review_answers", force: :cascade do |t|
+    t.uuid "weekly_review_id"
+    t.integer "weekly_review_question_id"
+    t.text "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weekly_review_questions", force: :cascade do |t|
+    t.text "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weekly_reviews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "user_id"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

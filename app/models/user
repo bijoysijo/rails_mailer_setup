@@ -1,0 +1,11 @@
+user
+weekly_reviews
+weekly_review_answers
+weekly_review_questions
+review_questions
+
+user - has_many weekly_reviews
+weekly_reviews - uuid, user_id, date, has_many review_questions, has_many weekly_review_answers
+review_questions - weekly_reviews_id, weekly_review_questions_id, belongs_to weekly_reviews, has_many weekly_review_questions_id
+weekly_review_questions - has_many review_questions, questions:text
+weekly_review_answers - belongs_to weekly_reviews, belongs_to weekly_review_questions, weekly_reviews_id, weekly_review_questions_id

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weekly_reviews_id: 1
+  weekly_review_questions_id: 1
+  answers: MyText
+
+two:
+  weekly_reviews_id: 1
+  weekly_review_questions_id: 1
+  answers: MyText
