@@ -1,3 +1,0 @@
-class WeeklyReviewQuestion < ApplicationRecord
-end
-
