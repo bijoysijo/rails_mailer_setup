@@ -1,0 +1,2 @@
+module WeeklyReviewsHelper
+end
